@@ -45,14 +45,27 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
 )
 
+file(GLOB SRC_FILES CMAKE_CONFIGURE_DEPENDS
+    App/ap/*.c
+    App/common/src/*.c
+    App/hw/*.c
+    App/hw/src/*.c
+)
+
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
+    ${SRC_FILES}
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    App/ap
+    App/common
+    App/common/include
+    App/hw
+    App/hw/include
 )
 
 # Add project symbols (macros)
@@ -66,3 +79,20 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
     # Add user defined libraries
 )
+
+target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
+    -Wno-expansion-to-defined
+    -Os
+)
+
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} 
+    POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} ARGS -O binary ${CMAKE_PROJECT_NAME}.elf ${CMAKE_PROJECT_NAME}.bin
+    COMMENT "Invoking: Make Binary"
+)  
+
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} 
+    POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} ARGS -O ihex ${CMAKE_PROJECT_NAME}.elf ${CMAKE_PROJECT_NAME}.hex
+    COMMENT "Invoking: Make Hex"
+)   

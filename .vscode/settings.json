@@ -1,5 +1,9 @@
 {
   "files.associations": {
-    "main.h": "c"
+    "main.h": "c",
+    "hw.h": "c",
+    "hw_def.h": "c",
+    "def.h": "c",
+    "ap_def.h": "c"
   }
 }
