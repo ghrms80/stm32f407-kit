@@ -1,10 +1,21 @@
 #include "ap.h"
 
 
-void apInit(void) 
+void apInit(void)
 {
   cliOpen(_DEF_UART1, 115200);
   cliLogo();
+
+  for (int i = 0; i < 32; i += 1)
+  {
+    lcdClearBuffer(black);
+    lcdPrintfResize(0, 40 - i, green, 16, "  -- Baram --");
+    lcdDrawRect(0, 0, LCD_WIDTH, LCD_HEIGHT, white);
+    lcdUpdateDraw();
+    delay(10);
+  }
+  delay(500);
+  lcdClear(black);
 }
 
 void apMain(void)
@@ -22,5 +33,6 @@ void apMain(void)
     }
 
     cliMain();
+    usbhProcess();
   }
 }

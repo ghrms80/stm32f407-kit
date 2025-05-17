@@ -22,6 +22,9 @@ bool hwInit(void)
 
   lcdInit();
   lcdSetFps(20);
+
+  usbhInit();
+  fatfsInit();
   
   return true;
 }

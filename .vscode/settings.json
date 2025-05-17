@@ -7,6 +7,8 @@
     "ap_def.h": "c",
     "stdint.h": "c",
     "uart.h": "c",
-    "led.h": "c"
+    "led.h": "c",
+    "usbh.h": "c",
+    "cli.h": "c"
   }
 }

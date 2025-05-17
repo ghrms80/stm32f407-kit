@@ -6,6 +6,9 @@
 #include "def.h"
 
 
+#define _USE_HW_USBH
+#define _USE_HW_FATFS
+
 #define _USE_HW_LED
 #define      HW_LED_MAX_CH          3
 

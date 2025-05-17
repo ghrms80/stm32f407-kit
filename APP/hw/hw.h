@@ -10,7 +10,8 @@
 #include "cli.h"
 #include "i2c.h"
 #include "lcd.h"
-
+#include "usbh.h"
+#include "fat_fs.h"
 
 bool hwInit(void);
 
