@@ -4,6 +4,9 @@
     "hw.h": "c",
     "hw_def.h": "c",
     "def.h": "c",
-    "ap_def.h": "c"
+    "ap_def.h": "c",
+    "stdint.h": "c",
+    "uart.h": "c",
+    "led.h": "c"
   }
 }

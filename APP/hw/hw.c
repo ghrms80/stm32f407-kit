@@ -2,7 +2,24 @@
 
 
 
-bool hwInit(void){
+
+bool hwInit(void)
+{
+  cliInit();
+  ledInit();
+  uartInit();
+  for (int i = 0; i < UART_MAX_CH; i++)
+  {
+    uartOpen(i, 115200);
+  }
+
+  logPrintf("\n[ Firmware Begin... ]\n");
+  logPrintf("Booting..Clock\t: %d Mhz\n",
+            (int)HAL_RCC_GetSysClockFreq() / 1000000);
+  logPrintf("\n");
+
+  i2cInit();
+
   return true;
 }
 
