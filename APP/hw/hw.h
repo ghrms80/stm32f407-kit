@@ -12,6 +12,7 @@
 #include "lcd.h"
 #include "usbh.h"
 #include "fat_fs.h"
+#include "flash.h"
 
 bool hwInit(void);
 

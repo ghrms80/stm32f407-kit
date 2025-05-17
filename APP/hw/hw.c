@@ -25,6 +25,7 @@ bool hwInit(void)
 
   usbhInit();
   fatfsInit();
+  flashInit();
   
   return true;
 }

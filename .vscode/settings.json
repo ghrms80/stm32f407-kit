@@ -9,6 +9,7 @@
     "uart.h": "c",
     "led.h": "c",
     "usbh.h": "c",
-    "cli.h": "c"
+    "cli.h": "c",
+    "flash.h": "c"
   }
 }
