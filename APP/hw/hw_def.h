@@ -22,6 +22,11 @@
 #define      HW_I2C_MAX_CH          2
 #define      HW_I2C_CH_OLED         _DEF_I2C1
 
+#define _USE_HW_LCD
+#define _USE_HW_SSD1306
+#define      HW_LCD_WIDTH           128
+#define      HW_LCD_HEIGHT          32
+
 
 #define logPrintf printf
 

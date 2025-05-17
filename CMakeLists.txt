@@ -50,6 +50,7 @@ file(GLOB SRC_FILES CMAKE_CONFIGURE_DEPENDS
     App/common/src/*.c
     App/hw/*.c
     App/hw/src/*.c
+    App/hw/src/lcd/*.c
 )
 
 # Add sources to executable
