@@ -100,7 +100,7 @@ void MX_USB_HOST_Process(void)
 /*
  * user callback definition
  */
-static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8_t id)
+static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
 {
   /* USER CODE BEGIN CALL_BACK_1 */
   (void) phost;

@@ -26,6 +26,7 @@ bool hwInit(void)
   usbhInit();
   fatfsInit();
   flashInit();
+  buttonInit();
   
   return true;
 }

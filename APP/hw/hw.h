@@ -13,6 +13,7 @@
 #include "usbh.h"
 #include "fat_fs.h"
 #include "flash.h"
+#include "button.h"
 
 bool hwInit(void);
 
