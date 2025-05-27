@@ -19,7 +19,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set the project name
-set(CMAKE_PROJECT_NAME stm32f407-kit)
+set(CMAKE_PROJECT_NAME stm32f407-kit-boot)
 
 # Include toolchain file
 include("cmake/gcc-arm-none-eabi.cmake")
@@ -47,6 +47,7 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 file(GLOB SRC_FILES CMAKE_CONFIGURE_DEPENDS
     App/ap/*.c
+    App/ap/boot/*.c
     App/common/src/*.c
     App/hw/*.c
     App/hw/src/*.c

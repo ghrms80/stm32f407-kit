@@ -10,7 +10,6 @@ extern "C" {
 #ifdef _USE_HW_USBH
 
 
-
 bool usbhInit(void);
 bool usbhIsConnected(void);
 bool usbhProcess(void);

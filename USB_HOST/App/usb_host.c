@@ -25,7 +25,7 @@
 #include "usbh_msc.h"
 
 /* USER CODE BEGIN Includes */
-#include "ap.h"
+#include "hw.h"
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PV */
@@ -109,18 +109,22 @@ static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
   switch (id)
   {
     case HOST_USER_SELECT_CONFIGURATION:
+      // logPrintf("\nHOST_USER_SELECT_CONFIGURATION\n");
       break;
 
     case HOST_USER_DISCONNECTION:
       Appli_state = APPLICATION_DISCONNECT;
+      // logPrintf("APPLICATION_DISCONNECT\n");
       break;
 
     case HOST_USER_CLASS_ACTIVE:
       Appli_state = APPLICATION_READY;
+      // logPrintf("HOST_USER_CLASS_ACTIVE\n");
       break;
 
     case HOST_USER_CONNECTION:
       Appli_state = APPLICATION_START;
+      // logPrintf("HOST_USER_CONNECTION\n");
       break;
 
     default:

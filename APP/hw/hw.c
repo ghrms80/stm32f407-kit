@@ -13,7 +13,7 @@ bool hwInit(void)
     uartOpen(i, 115200);
   }
 
-  logPrintf("\n[ Firmware Begin... ]\n");
+  logPrintf("\n[ Bootloader Begin... ]\n");
   logPrintf("Booting..Clock\t: %d Mhz\n",
             (int)HAL_RCC_GetSysClockFreq() / 1000000);
   logPrintf("\n");

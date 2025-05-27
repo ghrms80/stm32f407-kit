@@ -33,7 +33,6 @@ void MX_FATFS_Init(void)
   retUSBH = FATFS_LinkDriver(&USBH_Driver, USBHPath);
 
   /* USER CODE BEGIN Init */
-  /* additional user code for init */
   /* USER CODE END Init */
 }
 

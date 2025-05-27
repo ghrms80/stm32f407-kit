@@ -35,7 +35,7 @@ bool flashInit(void)
   return is_init;
 }
 
-bool flashErase(uint32_t addr, uint32_t length)
+bool flashErase(uint32_t addr, uint32_t length) 
 {
   bool                   ret           = true;
   uint32_t               first_sector  = 0;
@@ -55,7 +55,7 @@ bool flashErase(uint32_t addr, uint32_t length)
   erase_init.NbSectors     = nb_of_sectors;
 
 
-  ret = true;
+  // ret = true;
   if(HAL_FLASHEx_Erase(&erase_init, &sector_error) != HAL_OK)
   {
     ret = false;
@@ -165,11 +165,11 @@ void cliCmd(cli_args_t *args)
     addr   = args->getData(1);
     length = args->getData(2);
 
-    for (int i=0; i<(int)length; i++)
+    for (int i = 0; i < (int)length; i++)
     {
       uint8_t data;
 
-      flashRead(addr + i, &data, 1);
+      flashRead(addr + i, &data, 1); // read 1byte
       cliPrintf("addr 0x%08X : 0x%02X\n", addr + i, data);
     }
     ret = true;

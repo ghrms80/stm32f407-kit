@@ -11,7 +11,7 @@ extern "C" {
 
 
 bool fatfsInit(void);
-bool fatfsIsInit(void);
+
 
 #endif
 

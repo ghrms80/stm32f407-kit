@@ -1,10 +1,14 @@
 #include "ap.h"
+#include "boot/boot.h"
+
 
 
 void apInit(void)
 {
   cliOpen(_DEF_UART1, 115200);
   cliLogo();
+
+  bootInit();
 
   for (int i = 0; i < 32; i += 1)
   {
@@ -26,7 +30,7 @@ void apMain(void)
 
   while (1)
   {
-    if (millis() - pre_time >= 500)
+    if (millis() - pre_time >= 100)
     {
       pre_time = millis();
       ledToggle(_DEF_LED1);
