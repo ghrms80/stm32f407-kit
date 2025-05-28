@@ -2,7 +2,6 @@
 
 #ifdef _USE_HW_FATFS
 #include "cli.h"
-#include "fatfs.h"
 #include "usbh.h"
 #include "flash.h"
 
@@ -71,32 +70,31 @@ static FRESULT list_dir(const char *path)
   return res;
 }
 
-
 void cliCmd(cli_args_t *args)
 {
-	bool ret = false;
+  bool ret = false;
 
-	if (args->argc == 1 && args->isStr(0, "info"))
-	{
-		cliPrintf("is_mounted : %s\n", is_mounted ? "True" : "False");
-		ret = true;
-	}
+  if (args->argc == 1 && args->isStr(0, "info"))
+  {
+    cliPrintf("is_mounted : %s\n", is_mounted ? "True" : "False");
+    ret = true;
+  }
 
-	if (args->argc == 1 && args->isStr(0, "dir"))
-	{
+  if (args->argc == 1 && args->isStr(0, "dir"))
+  {
     if (usbhIsConnected())
     {
-  		list_dir("");
-    } 
+      list_dir("");
+    }
     else
     {
       cliPrintf("Not Connected USB\n");
     }
 
-		ret = true;
-	}
+    ret = true;
+  }
 
-    if (args->argc == 2 && args->isStr(0, "flash"))
+  if (args->argc == 2 && args->isStr(0, "flash"))
   {
     FIL      fil;
     FRESULT  fr;
@@ -111,24 +109,24 @@ void cliCmd(cli_args_t *args)
     fr = f_open(&fil, file_name, FA_READ);
     if (fr == FR_OK) // 파일이 열리면
     {
-      bool flash_ret;
+      bool     flash_ret;
       uint32_t file_size;
 
       // f_size() 함수를 통해 열린 파일의 크기를 구함
       file_size = f_size(&fil);
       cliPrintf("file size : %d bytes\n", file_size);
-      // 펌웨어 파일 크기만큼 삭제 
+      // 펌웨어 파일 크기만큼 삭제
       //(지금은 없지만, erase 실패하면 빠저나오는 방어 코드 필요!)
       flash_ret = flashErase(flash_addr, file_size);
-      cliPrintf("flashErase() %s\n", flash_ret ? "OK":"FAIL");
+      cliPrintf("flashErase() %s\n", flash_ret ? "OK" : "FAIL");
 
 
-      uint32_t read_index = 0;  // 펌웨어 파일을 읽은 위치
-      while(read_index < file_size)
+      uint32_t read_index = 0; // 펌웨어 파일을 읽은 위치
+      while (read_index < file_size)
       {
-        uint32_t read_size; // 파일에서 읽을 데이터
+        uint32_t read_size;    // 파일에서 읽을 데이터
         // 파일에서 buffer size(512 byte)만큼씩 데이터 로드
-        read_size = constrain(file_size - read_index, 0, sizeof(buffer));
+        read_size  = constrain(file_size - read_index, 0, sizeof(buffer));
         read_bytes = 0;
         // f_read 함수로 read_size 크기만큼 읽어서 buffer에 저장
         fr = f_read(&fil, buffer, read_size, &read_bytes);
@@ -150,7 +148,7 @@ void cliCmd(cli_args_t *args)
       // 전체 읽은 크기와 파일 크기가 같으면,
       if (read_index == file_size)
       {
-        cliPrintf("flashWrite() OK\n");  
+        cliPrintf("flashWrite() OK\n");
       }
 
       f_close(&fil);
@@ -159,7 +157,7 @@ void cliCmd(cli_args_t *args)
     ret = true;
   }
 
-	if (!ret)
+  if (!ret)
 	{
 		cliPrintf("fatfs info\n");
 		cliPrintf("fatfs dir\n");

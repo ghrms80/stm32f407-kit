@@ -9,7 +9,8 @@ extern "C" {
 
 
 bool bootInit(void);
-
+bool bootUpdateFromUSB(const char *file_name);
+bool bootJump(void);
 
 #ifdef __cplusplus
 }
